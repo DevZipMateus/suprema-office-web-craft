@@ -5,25 +5,25 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-background to-secondary/30">
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-background to-secondary/30 pt-16 sm:pt-20 lg:pt-24">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23000000%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%227%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
       
-      <div className="container-suprema relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-20 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left animate-fade-up">
-            <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+          <div className="text-center lg:text-left animate-fade-up order-2 lg:order-1">
+            <div className="mb-6 lg:mb-8">
+              <span className="inline-block px-3 py-2 sm:px-4 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 lg:mb-6">
                 Mobiliário Corporativo de Alto Padrão
               </span>
-              <h1 className="text-display mb-6 text-foreground">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 lg:mb-6 text-foreground">
                 Transforme seu{' '}
                 <span className="text-primary font-bold">escritório</span>{' '}
                 com elegância e{' '}
                 <span className="text-primary font-bold">sofisticação</span>
               </h1>
-              <p className="text-body-large text-muted-foreground max-w-lg">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0">
                 Na Suprema Office, criamos ambientes corporativos que inspiram produtividade 
                 e bem-estar. Móveis ergonômicos, design sofisticado e qualidade excepcional 
                 para sua empresa.
@@ -31,16 +31,16 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
               <a href="https://wa.me/5562984846914" target="_blank" rel="noopener noreferrer">
-                <Button className="btn-hero group">
+                <Button className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 group">
                   Solicitar Orçamento
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
               <Button 
                 variant="outline" 
-                className="btn-outline-hero"
+                className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300"
                 onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Nossos Serviços
@@ -48,36 +48,36 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-border/50">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 pt-6 lg:pt-8 border-t border-border/50">
               <div className="text-center lg:text-left">
-                <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <Award className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-2xl font-bold text-primary">15+</span>
+                <div className="flex items-center justify-center lg:justify-start mb-1 sm:mb-2">
+                  <Award className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-1 sm:mr-2" />
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">15+</span>
                 </div>
-                <p className="text-sm text-muted-foreground">Anos de experiência</p>
+                <p className="text-xs sm:text-sm lg:text-base text-muted-foreground">Anos de experiência</p>
               </div>
               <div className="text-center lg:text-left">
-                <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <Users className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-2xl font-bold text-primary">500+</span>
+                <div className="flex items-center justify-center lg:justify-start mb-1 sm:mb-2">
+                  <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-1 sm:mr-2" />
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">500+</span>
                 </div>
-                <p className="text-sm text-muted-foreground">Clientes satisfeitos</p>
+                <p className="text-xs sm:text-sm lg:text-base text-muted-foreground">Clientes satisfeitos</p>
               </div>
               <div className="text-center lg:text-left">
-                <div className="flex items-center justify-center lg:justify-start mb-2">
-                  <Clock className="h-5 w-5 text-primary mr-2" />
-                  <span className="text-2xl font-bold text-primary">24h</span>
+                <div className="flex items-center justify-center lg:justify-start mb-1 sm:mb-2">
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary mr-1 sm:mr-2" />
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">24h</span>
                 </div>
-                <p className="text-sm text-muted-foreground">Suporte técnico</p>
+                <p className="text-xs sm:text-sm lg:text-base text-muted-foreground">Suporte técnico</p>
               </div>
             </div>
           </div>
 
           {/* Video/Visual */}
-          <div className="relative lg:pl-8 animate-fade-in">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-3"></div>
-              <div className="relative bg-white p-8 rounded-2xl shadow-2xl border border-border/50">
+          <div className="relative animate-fade-in order-1 lg:order-2">
+            <div className="relative max-w-md mx-auto lg:max-w-none">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-2 lg:rotate-3"></div>
+              <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
                 <div className="aspect-square bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
                   <video 
                     src="/lovable-uploads/galeria/suprema..mp4" 
@@ -92,40 +92,40 @@ const Hero = () => {
                 </div>
                 
                 {/* Feature Cards */}
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-secondary/50 rounded-lg">
-                    <h4 className="font-semibold text-sm mb-1">Ergonomia</h4>
-                    <p className="text-xs text-muted-foreground">Conforto garantido</p>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 mt-4 sm:mt-6">
+                  <div className="text-center p-2 sm:p-3 lg:p-4 bg-secondary/50 rounded-lg">
+                    <h4 className="font-semibold text-xs sm:text-sm lg:text-base mb-1">Ergonomia</h4>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Conforto garantido</p>
                   </div>
-                  <div className="text-center p-4 bg-secondary/50 rounded-lg">
-                    <h4 className="font-semibold text-sm mb-1">Qualidade</h4>
-                    <p className="text-xs text-muted-foreground">Materiais premium</p>
+                  <div className="text-center p-2 sm:p-3 lg:p-4 bg-secondary/50 rounded-lg">
+                    <h4 className="font-semibold text-xs sm:text-sm lg:text-base mb-1">Qualidade</h4>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Materiais premium</p>
                   </div>
-                  <div className="text-center p-4 bg-secondary/50 rounded-lg">
-                    <h4 className="font-semibold text-sm mb-1">Design</h4>
-                    <p className="text-xs text-muted-foreground">Estética moderna</p>
+                  <div className="text-center p-2 sm:p-3 lg:p-4 bg-secondary/50 rounded-lg">
+                    <h4 className="font-semibold text-xs sm:text-sm lg:text-base mb-1">Design</h4>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Estética moderna</p>
                   </div>
-                  <div className="text-center p-4 bg-secondary/50 rounded-lg">
-                    <h4 className="font-semibold text-sm mb-1">Durabilidade</h4>
-                    <p className="text-xs text-muted-foreground">Longa vida útil</p>
+                  <div className="text-center p-2 sm:p-3 lg:p-4 bg-secondary/50 rounded-lg">
+                    <h4 className="font-semibold text-xs sm:text-sm lg:text-base mb-1">Durabilidade</h4>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Longa vida útil</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-glow">
-              <Award className="w-8 h-8 text-primary" />
+            <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-full flex items-center justify-center animate-pulse-glow">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary" />
             </div>
-            <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent rounded-lg transform rotate-12 animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-accent rounded-lg transform rotate-12 animate-float" style={{ animationDelay: '1s' }}></div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-primary rounded-full flex justify-center">
+          <div className="w-1 h-2 sm:h-3 bg-primary rounded-full mt-1 sm:mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
