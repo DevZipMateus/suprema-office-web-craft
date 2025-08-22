@@ -56,11 +56,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className={`fixed w-full z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
-          : 'bg-transparent'
-      }`}>
+      <header className="fixed w-full z-40 bg-primary shadow-lg">
         <nav className="container-suprema py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
@@ -71,8 +67,8 @@ const Header = () => {
                 className="h-10 w-auto"
               />
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-primary">Suprema Office</h1>
-                <p className="text-xs text-muted-foreground">Mobiliário Corporativo</p>
+                <h1 className="text-xl font-bold text-primary-foreground">Suprema Office</h1>
+                <p className="text-xs text-primary-foreground/70">Mobiliário Corporativo</p>
               </div>
             </div>
 
@@ -82,14 +78,14 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 relative group"
+                  className="text-sm font-medium text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 relative group"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-foreground transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
               <a href="https://wa.me/5562984846914" target="_blank" rel="noopener noreferrer">
-                <Button className="btn-hero">
+                <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-2 border-primary-foreground hover:border-primary-foreground/90 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
                   Orçamento
                 </Button>
               </a>
@@ -101,7 +97,7 @@ const Header = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2"
+                className="p-2 text-primary-foreground hover:text-primary-foreground/80 hover:bg-primary-foreground/10"
               >
                 {isMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -115,21 +111,21 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t shadow-lg animate-fade-in">
+          <div className="md:hidden bg-primary border-t border-primary-foreground/20 shadow-lg animate-fade-in">
             <div className="container-suprema py-6">
               <div className="flex flex-col space-y-4">
                 {navigation.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-left py-2 text-foreground hover:text-primary transition-colors"
+                    className="text-left py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
                   >
                     {item.name}
                   </button>
                 ))}
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t border-primary-foreground/20">
                   <a href="https://wa.me/5562984846914" target="_blank" rel="noopener noreferrer">
-                    <Button className="btn-hero w-full">
+                    <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 w-full px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
                       Solicitar Orçamento
                     </Button>
                   </a>
