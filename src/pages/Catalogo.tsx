@@ -2,6 +2,10 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Header from '@/components/Header';
 
 const Catalogo = () => {
   const images = [
@@ -66,15 +70,28 @@ const Catalogo = () => {
     setImageLoaded(prev => ({ ...prev, [index]: true }));
   };
 
+  const handleSolicitarOrcamento = (imageName: string) => {
+    const message = `Olá! Gostaria de solicitar um orçamento para um projeto similar ao: ${imageName}`;
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header Space */}
-      <div className="h-20"></div>
+      <Header />
       
       {/* Hero Section */}
       <section className="py-12 md:py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
+            <div className="mb-6">
+              <Link to="/">
+                <Button variant="outline" className="mb-4">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Voltar
+                </Button>
+              </Link>
+            </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
               Nosso Catálogo
             </h1>
@@ -91,7 +108,7 @@ const Catalogo = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {images.map((image, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-0 relative aspect-square">
+                <CardContent className="p-0 relative aspect-square group">
                   {!imageLoaded[index] && (
                     <Skeleton className="w-full h-full absolute inset-0" />
                   )}
@@ -104,10 +121,34 @@ const Catalogo = () => {
                     onLoad={() => handleImageLoad(index)}
                     onClick={() => window.open(image.src, '_blank')}
                   />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSolicitarOrcamento(image.alt);
+                      }}
+                      className="bg-primary hover:bg-primary/90 text-white"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Solicitar Orçamento
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Bottom Back Button */}
+      <section className="py-8 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div className="container mx-auto px-4 text-center">
+          <Link to="/">
+            <Button variant="outline">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Voltar
+            </Button>
+          </Link>
         </div>
       </section>
     </div>
