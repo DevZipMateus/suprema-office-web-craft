@@ -73,17 +73,22 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Image/Visual */}
+          {/* Video/Visual */}
           <div className="relative lg:pl-8 animate-fade-in">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-3"></div>
               <div className="relative bg-white p-8 rounded-2xl shadow-2xl border border-border/50">
-                <div className="aspect-square bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center">
-                  <img 
-                    src="/lovable-uploads/fa262f54-2eae-4a81-a027-612688940af8.png" 
-                    alt="Suprema Office - Mobiliário de Alto Padrão"
-                    className="w-32 h-32 object-contain animate-float"
-                  />
+                <div className="aspect-square bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
+                  <video 
+                    src="/lovable-uploads/galeria/suprema..mp4" 
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl"
+                  >
+                    Seu navegador não suporta vídeos.
+                  </video>
                 </div>
                 
                 {/* Feature Cards */}
