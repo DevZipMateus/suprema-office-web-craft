@@ -1,151 +1,113 @@
 
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navigation = [
-    { name: 'Início', href: '#home' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Serviços', href: '#services' },
-    { name: 'Contato', href: '#contact' },
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
     }
+    setIsMenuOpen(false);
   };
 
-  return (
-    <header className="fixed w-full z-40 bg-black shadow-lg">
-      {/* Top Bar */}
-      <div className="hidden lg:block bg-black text-white py-2 border-b border-white/10">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex justify-between items-center text-xs xl:text-sm">
-            <div className="flex items-center space-x-4 xl:space-x-6">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-3 h-3 xl:w-4 xl:h-4" />
-                <span>(62) 98484-6914</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-3 h-3 xl:w-4 xl:h-4" />
-                <span>supremaoffice.go@gmail.com</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MapPin className="w-3 h-3 xl:w-4 xl:h-4" />
-              <span>Seg-Sex 8h-18h | Sáb 8h-12h</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  const navItems = [
+    { name: 'Início', action: () => scrollToSection('hero') },
+    { name: 'Sobre', action: () => scrollToSection('about') },
+    { name: 'Serviços', action: () => scrollToSection('services') },
+    { name: 'Catálogo', href: '/catalogo' },
+    { name: 'Contato', action: () => scrollToSection('contact') }
+  ];
 
-      {/* Main Header */}
-      <nav className="container mx-auto px-4 py-3 lg:py-4 max-w-7xl">
-        <div className="flex justify-between items-center">
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-2 lg:space-x-3">
-            <img 
-              src="/lovable-uploads/fa262f54-2eae-4a81-a027-612688940af8.png" 
-              alt="Suprema Office - Mobiliário Corporativo"
-              className="h-8 w-auto sm:h-10 lg:h-12"
-            />
-            <div className="hidden sm:block">
-              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">Suprema Office</h1>
-              <p className="text-xs sm:text-sm text-white/70">Mobiliário Corporativo</p>
-            </div>
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <img
+                src="/lovable-uploads/fa262f54-2eae-4a81-a027-612688940af8.png"
+                alt="Suprema Office"
+                className="h-8 md:h-12 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            {navigation.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-sm xl:text-base font-medium text-white hover:text-white/80 transition-colors duration-200 relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-              </button>
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <div key={item.name}>
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className="text-gray-700 hover:text-primary font-medium transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={item.action}
+                    className="text-gray-700 hover:text-primary font-medium transition-colors duration-200"
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </div>
             ))}
-            <a href="https://wa.me/5562984846914" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-white text-black hover:bg-white/90 border-2 border-white hover:border-white/90 px-6 xl:px-8 py-2 xl:py-3 rounded-lg font-semibold text-sm xl:text-base transition-all duration-300">
-                Orçamento
-              </Button>
-            </a>
-          </div>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          {/* Mobile menu button */}
+          <div className="md:hidden">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-white hover:text-white/80 hover:bg-white/10"
+              className="text-gray-700"
             >
-              {isMenuOpen ? (
-                <X className="h-5 w-5 sm:h-6 sm:w-6" />
-              ) : (
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
-      </nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-black border-t border-white/20 shadow-lg animate-fade-in">
-          <div className="container mx-auto px-4 py-4 sm:py-6 max-w-7xl">
-            <div className="flex flex-col space-y-3 sm:space-y-4">
-              {navigation.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-left py-2 sm:py-3 text-base sm:text-lg text-white hover:text-white/80 transition-colors"
-                >
-                  {item.name}
-                </button>
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+              {navItems.map((item) => (
+                <div key={item.name}>
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      className="block px-3 py-2 text-gray-700 hover:text-primary font-medium transition-colors duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={item.action}
+                      className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary font-medium transition-colors duration-200"
+                    >
+                      {item.name}
+                    </button>
+                  )}
+                </div>
               ))}
-              
-              {/* Mobile Contact Info */}
-              <div className="pt-4 border-t border-white/20 space-y-3 sm:hidden">
-                <div className="flex items-center space-x-2 text-sm text-white/80">
-                  <Phone className="w-4 h-4" />
-                  <span>(62) 98484-6914</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-white/80">
-                  <Mail className="w-4 h-4" />
-                  <span>supremaoffice.go@gmail.com</span>
-                </div>
-              </div>
-              
-              <div className="pt-4 border-t border-white/20">
-                <a href="https://wa.me/5562984846914" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-white text-black hover:bg-white/90 w-full px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300">
-                    Solicitar Orçamento
-                  </Button>
-                </a>
-              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
