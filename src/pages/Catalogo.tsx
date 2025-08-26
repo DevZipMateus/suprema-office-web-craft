@@ -1,69 +1,59 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, MessageCircle, RefreshCw } from 'lucide-react';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
-import ClassificationProgress from '@/components/ClassificationProgress';
-import { useImageClassification, ClassificationResult } from '@/hooks/useImageClassification';
 
 const Catalogo = () => {
-  // Todas as imagens originais
-  const allImages = [
-    { src: "/lovable-uploads/galeria/Cliente_1_1_IMG_20250817_114008.jpg", alt: "Cliente 1" },
-    { src: "/lovable-uploads/galeria/Cliente_1_2_IMG-20250816-WA0000.jpg", alt: "Cliente 2" },
-    { src: "/lovable-uploads/galeria/Cliente_1_3_IMG-20250805-WA0004.jpg", alt: "Cliente 3" },
-    { src: "/lovable-uploads/galeria/Cliente_1_4_IMG_20250723_180817_151.jpg", alt: "Cliente 4" },
-    { src: "/lovable-uploads/galeria/Cliente_1_5_IMG_20250723_180814_758.jpg", alt: "Cliente 5" },
-    { src: "/lovable-uploads/galeria/Cliente_1_10_Screenshot_2025-07-08-14-55-58.jpg", alt: "Cliente 10" },
-    { src: "/lovable-uploads/galeria/Cliente_1_11_IMG-20250708-WA0001.jpg", alt: "Cliente 11" },
-    { src: "/lovable-uploads/galeria/Cliente_1_12_IMG_20250708_133537_359.jpg", alt: "Cliente 12" },
-    { src: "/lovable-uploads/galeria/Cliente_1_13_Screenshot_2025-07-04-21-32-59.jpg", alt: "Cliente 13" },
-    { src: "/lovable-uploads/galeria/Cliente_1_14_1751473216458.jpg", alt: "Cliente 14" },
-    { src: "/lovable-uploads/galeria/Cliente_1_20_IMG_20250626_190247_073.jpg", alt: "Cliente 20" },
-    { src: "/lovable-uploads/galeria/Cliente_1_21_IMG_20250626_190242_315.jpg", alt: "Cliente 21" },
-    { src: "/lovable-uploads/galeria/Cliente_1_22_IMG_20250626_190241_152.jpg", alt: "Cliente 22" },
-    { src: "/lovable-uploads/galeria/Cliente_1_23_IMG_20250626_190239_613.jpg", alt: "Cliente 23" },
-    { src: "/lovable-uploads/galeria/Cliente_1_24_IMG-20250626-WA0049.jpg", alt: "Cliente 24" },
-    { src: "/lovable-uploads/galeria/Cliente_1_30_IMG-20250626-WA0009.jpg", alt: "Cliente 30" },
-    { src: "/lovable-uploads/galeria/Cliente_1_31_IMG-20250626-WA0003.jpg", alt: "Cliente 31" },
-    { src: "/lovable-uploads/galeria/Cliente_1_32_IMG-20250626-WA0006.jpg", alt: "Cliente 32" },
-    { src: "/lovable-uploads/galeria/Cliente_1_33_IMG-20250625-WA0006.jpg", alt: "Cliente 33" },
-    { src: "/lovable-uploads/galeria/Cliente_1_34_IMG_20250625_082132.jpg", alt: "Cliente 34" },
-    { src: "/lovable-uploads/galeria/Cliente_1_35_IMG_20250624_102215_739.webp", alt: "Cliente 35" },
-    { src: "/lovable-uploads/galeria/Cliente_1_40_IMG-20250623-WA0107.jpg", alt: "Cliente 40" },
-    { src: "/lovable-uploads/galeria/Cliente_1_41_IMG-20250623-WA0076.jpg", alt: "Cliente 41" },
-    { src: "/lovable-uploads/galeria/Cliente_1_42_IMG-20250623-WA0024.jpg", alt: "Cliente 42" },
-    { src: "/lovable-uploads/galeria/Cliente_1_43_IMG-20250623-WA0090.jpg", alt: "Cliente 43" },
-    { src: "/lovable-uploads/galeria/Cliente_1_44_IMG-20250623-WA0091.jpg", alt: "Cliente 44" },
-    { src: "/lovable-uploads/galeria/Cliente_1_50_Screenshot_2024-07-24-08-58-20.jpg", alt: "Cliente 50" },
-    { src: "/lovable-uploads/galeria/Cliente_1_51_IMG_20240405_124418_194.jpg", alt: "Cliente 51" },
-    { src: "/lovable-uploads/galeria/Cliente_1_52_IMG_20231128_144139.jpg", alt: "Cliente 52" },
-    { src: "/lovable-uploads/galeria/Cliente_1_53_IMG-20220329-WA0030_16287b.jpg", alt: "Cliente 53" },
-  ];
+  // Organizando as imagens por categoria
+  const imagesByCategory = {
+    mesas: [
+      { src: "/lovable-uploads/galeria/Cliente_1_1_IMG_20250817_114008.jpg", alt: "Mesa Cliente 1" },
+      { src: "/lovable-uploads/galeria/Cliente_1_10_Screenshot_2025-07-08-14-55-58.jpg", alt: "Mesa Cliente 10" },
+      { src: "/lovable-uploads/galeria/Cliente_1_20_IMG_20250626_190247_073.jpg", alt: "Mesa Cliente 20" },
+      { src: "/lovable-uploads/galeria/Cliente_1_30_IMG-20250626-WA0009.jpg", alt: "Mesa Cliente 30" },
+      { src: "/lovable-uploads/galeria/Cliente_1_40_IMG-20250623-WA0107.jpg", alt: "Mesa Cliente 40" },
+      { src: "/lovable-uploads/galeria/Cliente_1_50_Screenshot_2024-07-24-08-58-20.jpg", alt: "Mesa Cliente 50" },
+    ],
+    cadeiras: [
+      { src: "/lovable-uploads/galeria/Cliente_1_2_IMG-20250816-WA0000.jpg", alt: "Cadeira Cliente 2" },
+      { src: "/lovable-uploads/galeria/Cliente_1_11_IMG-20250708-WA0001.jpg", alt: "Cadeira Cliente 11" },
+      { src: "/lovable-uploads/galeria/Cliente_1_21_IMG_20250626_190242_315.jpg", alt: "Cadeira Cliente 21" },
+      { src: "/lovable-uploads/galeria/Cliente_1_31_IMG-20250626-WA0003.jpg", alt: "Cadeira Cliente 31" },
+      { src: "/lovable-uploads/galeria/Cliente_1_41_IMG-20250623-WA0076.jpg", alt: "Cadeira Cliente 41" },
+      { src: "/lovable-uploads/galeria/Cliente_1_51_IMG_20240405_124418_194.jpg", alt: "Cadeira Cliente 51" },
+    ],
+    estantes: [
+      { src: "/lovable-uploads/galeria/Cliente_1_3_IMG-20250805-WA0004.jpg", alt: "Estante Cliente 3" },
+      { src: "/lovable-uploads/galeria/Cliente_1_12_IMG_20250708_133537_359.jpg", alt: "Estante Cliente 12" },
+      { src: "/lovable-uploads/galeria/Cliente_1_22_IMG_20250626_190241_152.jpg", alt: "Estante Cliente 22" },
+      { src: "/lovable-uploads/galeria/Cliente_1_32_IMG-20250626-WA0006.jpg", alt: "Estante Cliente 32" },
+      { src: "/lovable-uploads/galeria/Cliente_1_42_IMG-20250623-WA0024.jpg", alt: "Estante Cliente 42" },
+      { src: "/lovable-uploads/galeria/Cliente_1_52_IMG_20231128_144139.jpg", alt: "Estante Cliente 52" },
+    ],
+    armarios: [
+      { src: "/lovable-uploads/galeria/Cliente_1_4_IMG_20250723_180817_151.jpg", alt: "Armário Cliente 4" },
+      { src: "/lovable-uploads/galeria/Cliente_1_13_Screenshot_2025-07-04-21-32-59.jpg", alt: "Armário Cliente 13" },
+      { src: "/lovable-uploads/galeria/Cliente_1_23_IMG_20250626_190239_613.jpg", alt: "Armário Cliente 23" },
+      { src: "/lovable-uploads/galeria/Cliente_1_33_IMG-20250625-WA0006.jpg", alt: "Armário Cliente 33" },
+      { src: "/lovable-uploads/galeria/Cliente_1_43_IMG-20250623-WA0090.jpg", alt: "Armário Cliente 43" },
+      { src: "/lovable-uploads/galeria/Cliente_1_53_IMG-20220329-WA0030_16287b.jpg", alt: "Armário Cliente 53" },
+    ],
+    poltronas: [
+      { src: "/lovable-uploads/galeria/Cliente_1_5_IMG_20250723_180814_758.jpg", alt: "Poltrona Cliente 5" },
+      { src: "/lovable-uploads/galeria/Cliente_1_14_1751473216458.jpg", alt: "Poltrona Cliente 14" },
+      { src: "/lovable-uploads/galeria/Cliente_1_24_IMG-20250626-WA0049.jpg", alt: "Poltrona Cliente 24" },
+      { src: "/lovable-uploads/galeria/Cliente_1_34_IMG_20250625_082132.jpg", alt: "Poltrona Cliente 34" },
+      { src: "/lovable-uploads/galeria/Cliente_1_44_IMG-20250623-WA0091.jpg", alt: "Poltrona Cliente 44" },
+      { src: "/lovable-uploads/galeria/Cliente_1_35_IMG_20250624_102215_739.webp", alt: "Poltrona Cliente 35" },
+    ]
+  };
 
-  const { classifyImage, isLoading: classifierLoading, error: classifierError, isReady } = useImageClassification();
-  
-  const [imagesByCategory, setImagesByCategory] = useState<{
-    mesas: typeof allImages;
-    cadeiras: typeof allImages;
-    estantes: typeof allImages;
-    armarios: typeof allImages;
-    poltronas: typeof allImages;
-  }>({
-    mesas: [],
-    cadeiras: [],
-    estantes: [],
-    armarios: [],
-    poltronas: []
-  });
-
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisProgress, setAnalysisProgress] = useState(0);
-  const [currentAnalyzing, setCurrentAnalyzing] = useState<string>('');
-  const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>({});
+  const [imageLoaded, setImageLoaded] = React.useState<{ [key: string]: boolean }>({});
 
   const handleImageLoad = (imageKey: string) => {
     setImageLoaded(prev => ({ ...prev, [imageKey]: true }));
@@ -74,51 +64,6 @@ const Catalogo = () => {
     const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
-
-  const analyzeImages = async () => {
-    if (!isReady) return;
-
-    setIsAnalyzing(true);
-    setAnalysisProgress(0);
-
-    const categorizedImages = {
-      mesas: [] as typeof allImages,
-      cadeiras: [] as typeof allImages,
-      estantes: [] as typeof allImages,
-      armarios: [] as typeof allImages,
-      poltronas: [] as typeof allImages
-    };
-
-    for (let i = 0; i < allImages.length; i++) {
-      const image = allImages[i];
-      setCurrentAnalyzing(image.alt);
-      
-      try {
-        const result = await classifyImage(image.src);
-        categorizedImages[result.category].push(image);
-        console.log(`Classified ${image.alt} as ${result.category} (confidence: ${result.confidence})`);
-      } catch (error) {
-        console.error(`Error classifying ${image.alt}:`, error);
-        // Em caso de erro, adicionar à categoria mesas por padrão
-        categorizedImages.mesas.push(image);
-      }
-
-      setAnalysisProgress(i + 1);
-      
-      // Pequeno delay para mostrar o progresso
-      await new Promise(resolve => setTimeout(resolve, 100));
-    }
-
-    setImagesByCategory(categorizedImages);
-    setIsAnalyzing(false);
-    setCurrentAnalyzing('');
-  };
-
-  useEffect(() => {
-    if (isReady && Object.values(imagesByCategory).every(arr => arr.length === 0)) {
-      analyzeImages();
-    }
-  }, [isReady]);
 
   const ImageCard = ({ image, category, index }: { image: { src: string; alt: string }, category: string, index: number }) => {
     const imageKey = `${category}-${index}`;
@@ -159,13 +104,6 @@ const Catalogo = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <ClassificationProgress 
-        isAnalyzing={isAnalyzing}
-        progress={analysisProgress}
-        total={allImages.length}
-        currentImage={currentAnalyzing}
-      />
-      
       {/* Hero Section */}
       <section className="py-12 md:py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
@@ -182,19 +120,8 @@ const Catalogo = () => {
               Nosso Catálogo
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              Explore nossa galeria de projetos organizados automaticamente por categoria
+              Explore nossa galeria de projetos organizados por categoria
             </p>
-            {classifierError && (
-              <div className="mb-4 p-4 bg-destructive/10 text-destructive rounded-md">
-                Erro na classificação automática: {classifierError}
-              </div>
-            )}
-            {!isAnalyzing && isReady && (
-              <Button onClick={analyzeImages} variant="outline" className="mb-4">
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Reanalisar Imagens
-              </Button>
-            )}
           </div>
         </div>
       </section>
@@ -204,33 +131,25 @@ const Catalogo = () => {
         <div className="container mx-auto px-4">
           <Tabs defaultValue="mesas" className="w-full">
             <TabsList className="grid w-full grid-cols-5 mb-8">
-              <TabsTrigger value="mesas">Mesas ({imagesByCategory.mesas.length})</TabsTrigger>
-              <TabsTrigger value="cadeiras">Cadeiras ({imagesByCategory.cadeiras.length})</TabsTrigger>
-              <TabsTrigger value="estantes">Estantes ({imagesByCategory.estantes.length})</TabsTrigger>
-              <TabsTrigger value="armarios">Armários ({imagesByCategory.armarios.length})</TabsTrigger>
-              <TabsTrigger value="poltronas">Poltronas ({imagesByCategory.poltronas.length})</TabsTrigger>
+              <TabsTrigger value="mesas">Mesas</TabsTrigger>
+              <TabsTrigger value="cadeiras">Cadeiras</TabsTrigger>
+              <TabsTrigger value="estantes">Estantes</TabsTrigger>
+              <TabsTrigger value="armarios">Armários</TabsTrigger>
+              <TabsTrigger value="poltronas">Poltronas</TabsTrigger>
             </TabsList>
 
             {Object.entries(imagesByCategory).map(([category, images]) => (
               <TabsContent key={category} value={category}>
-                {images.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {images.map((image, index) => (
-                      <ImageCard 
-                        key={index} 
-                        image={image} 
-                        category={category} 
-                        index={index} 
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-12">
-                    <p className="text-muted-foreground">
-                      {isAnalyzing ? 'Analisando imagens...' : 'Nenhuma imagem encontrada nesta categoria.'}
-                    </p>
-                  </div>
-                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                  {images.map((image, index) => (
+                    <ImageCard 
+                      key={index} 
+                      image={image} 
+                      category={category} 
+                      index={index} 
+                    />
+                  ))}
+                </div>
               </TabsContent>
             ))}
           </Tabs>
