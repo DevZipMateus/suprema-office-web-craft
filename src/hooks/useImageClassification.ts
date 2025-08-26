@@ -42,6 +42,9 @@ export const useImageClassification = () => {
     try {
       const results = await classifier(imageSrc);
       
+      // Handle both single and array results
+      const resultArray = Array.isArray(results) ? results : [results];
+      
       // Mapear labels do modelo para nossas categorias
       const categoryMap: { [key: string]: 'mesas' | 'cadeiras' | 'estantes' | 'armarios' | 'poltronas' } = {
         'table': 'mesas',
@@ -61,11 +64,15 @@ export const useImageClassification = () => {
       // Encontrar a melhor correspondência
       let bestMatch: ClassificationResult = { category: 'mesas', confidence: 0 };
       
-      for (const result of results) {
-        const label = result.label.toLowerCase();
-        for (const [key, category] of Object.entries(categoryMap)) {
-          if (label.includes(key) && result.score > bestMatch.confidence) {
-            bestMatch = { category, confidence: result.score };
+      for (const result of resultArray) {
+        if (result && typeof result === 'object' && 'label' in result && 'score' in result) {
+          const label = (result.label as string).toLowerCase();
+          const score = result.score as number;
+          
+          for (const [key, category] of Object.entries(categoryMap)) {
+            if (label.includes(key) && score > bestMatch.confidence) {
+              bestMatch = { category, confidence: score };
+            }
           }
         }
       }
