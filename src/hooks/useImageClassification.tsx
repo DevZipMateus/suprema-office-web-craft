@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { pipeline, Pipeline } from '@huggingface/transformers';
+import { pipeline, ImageClassificationPipeline } from '@huggingface/transformers';
 
 export interface ClassificationResult {
   category: 'mesas' | 'cadeiras' | 'estantes' | 'armarios' | 'poltronas';
@@ -8,7 +8,7 @@ export interface ClassificationResult {
 }
 
 export const useImageClassification = () => {
-  const [classifier, setClassifier] = useState<Pipeline | null>(null);
+  const [classifier, setClassifier] = useState<ImageClassificationPipeline | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export const useImageClassification = () => {
           'microsoft/resnet-50',
           { device: 'webgpu' }
         );
-        setClassifier(imageClassifier);
+        setClassifier(imageClassifier as ImageClassificationPipeline);
         setError(null);
       } catch (err) {
         console.error('Error initializing classifier:', err);
