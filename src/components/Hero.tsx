@@ -78,14 +78,14 @@ const Hero = () => {
             <div className="relative max-w-md mx-auto lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-2 lg:rotate-3"></div>
               <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
-                <div className="aspect-square bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
+                <div className="aspect-video bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
                   <video 
                     src="/lovable-uploads/galeria/suprema.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-full object-contain rounded-xl"
                   >
                     Seu navegador não suporta vídeos.
                   </video>
