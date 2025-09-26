@@ -80,7 +80,7 @@ const Hero = () => {
               <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
                 <div className="w-full h-[28rem] bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
                   <video 
-                    src="/lovable-uploads/galeria/suprema.mp4"
+                    src="/lovable-uploads/galeria/Aumente sua produtividade e conforto no trabalho com nossos móveis para escritórios de alta qual.mp4"
                     autoPlay
                     loop
                     muted
