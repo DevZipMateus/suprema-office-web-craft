@@ -13,7 +13,6 @@ const Catalogo = () => {
   const imagesByCategory = {
     mesas: [],
     cadeiras: [],
-    estantes: [],
     armarios: [],
     poltronas: []
   };
@@ -95,10 +94,9 @@ const Catalogo = () => {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="mesas" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="mesas">Mesas</TabsTrigger>
               <TabsTrigger value="cadeiras">Cadeiras</TabsTrigger>
-              <TabsTrigger value="estantes">Estantes</TabsTrigger>
               <TabsTrigger value="armarios">Armários</TabsTrigger>
               <TabsTrigger value="poltronas">Poltronas</TabsTrigger>
             </TabsList>
