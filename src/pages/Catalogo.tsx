@@ -11,10 +11,84 @@ import Header from '@/components/Header';
 const Catalogo = () => {
   // Organizando as imagens por categoria
   const imagesByCategory = {
-    mesas: [],
-    cadeiras: [],
-    armarios: [],
-    poltronas: []
+    mesas: [
+      { src: '/lovable-uploads/novas fotos/mesas/1058048399738405.jpg', alt: 'Mesa Design 1058048399738405' },
+      { src: '/lovable-uploads/novas fotos/mesas/1126553962939477.jpg', alt: 'Mesa Design 1126553962939477' },
+      { src: '/lovable-uploads/novas fotos/mesas/1129098415324586.jpg', alt: 'Mesa Design 1129098415324586' },
+      { src: '/lovable-uploads/novas fotos/mesas/1131333665610136.jpg', alt: 'Mesa Design 1131333665610136' },
+      { src: '/lovable-uploads/novas fotos/mesas/1231545382111703.jpg', alt: 'Mesa Design 1231545382111703' },
+      { src: '/lovable-uploads/novas fotos/mesas/1257071483099064.jpg', alt: 'Mesa Design 1257071483099064' },
+      { src: '/lovable-uploads/novas fotos/mesas/1330652321905338.jpg', alt: 'Mesa Design 1330652321905338' },
+      { src: '/lovable-uploads/novas fotos/mesas/1348656753524121.jpg', alt: 'Mesa Design 1348656753524121' },
+      { src: '/lovable-uploads/novas fotos/mesas/1350127976758662.jpg', alt: 'Mesa Design 1350127976758662' },
+      { src: '/lovable-uploads/novas fotos/mesas/1368604368605935.jpg', alt: 'Mesa Design 1368604368605935' },
+      { src: '/lovable-uploads/novas fotos/mesas/1511858409987034.jpg', alt: 'Mesa Design 1511858409987034' },
+      { src: '/lovable-uploads/novas fotos/mesas/1594568471522221.jpg', alt: 'Mesa Design 1594568471522221' },
+      { src: '/lovable-uploads/novas fotos/mesas/1780567562566856.jpg', alt: 'Mesa Design 1780567562566856' },
+      { src: '/lovable-uploads/novas fotos/mesas/1853004525426636.jpg', alt: 'Mesa Design 1853004525426636' },
+      { src: '/lovable-uploads/novas fotos/mesas/1980401526091719.jpg', alt: 'Mesa Design 1980401526091719' },
+      { src: '/lovable-uploads/novas fotos/mesas/1982864425797454.jpg', alt: 'Mesa Design 1982864425797454' },
+      { src: '/lovable-uploads/novas fotos/mesas/2191524547998729.jpg', alt: 'Mesa Design 2191524547998729' },
+      { src: '/lovable-uploads/novas fotos/mesas/24439385915742181.jpg', alt: 'Mesa Design 24439385915742181' },
+      { src: '/lovable-uploads/novas fotos/mesas/4252318761693369.jpg', alt: 'Mesa Design 4252318761693369' },
+      { src: '/lovable-uploads/novas fotos/mesas/809550864819075.jpg', alt: 'Mesa Design 809550864819075' },
+      { src: '/lovable-uploads/novas fotos/mesas/829056076359438.jpg', alt: 'Mesa Design 829056076359438' },
+      { src: '/lovable-uploads/novas fotos/mesas/974212134864788.jpg', alt: 'Mesa Design 974212134864788' }
+    ],
+    cadeiras: [
+      { src: '/lovable-uploads/novas fotos/cadeiras/1115663940702811.jpg', alt: 'Cadeira Design 1115663940702811' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1129074935352334.jpg', alt: 'Cadeira Design 1129074935352334' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1153601650166944.jpg', alt: 'Cadeira Design 1153601650166944' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1154898696496643.jpg', alt: 'Cadeira Design 1154898696496643' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1157270309637868.jpg', alt: 'Cadeira Design 1157270309637868' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1231780892324001.jpg', alt: 'Cadeira Design 1231780892324001' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1300140694886164.jpg', alt: 'Cadeira Design 1300140694886164' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1302167384681806.jpg', alt: 'Cadeira Design 1302167384681806' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1315095226878682.jpg', alt: 'Cadeira Design 1315095226878682' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1350929033406014.jpg', alt: 'Cadeira Design 1350929033406014' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1374076460996019.jpg', alt: 'Cadeira Design 1374076460996019' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1701636677196943.jpg', alt: 'Cadeira Design 1701636677196943' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1848421562778219.jpg', alt: 'Cadeira Design 1848421562778219' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1913876052669746.jpg', alt: 'Cadeira Design 1913876052669746' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1933227337468500.jpg', alt: 'Cadeira Design 1933227337468500' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1939379453577753.jpg', alt: 'Cadeira Design 1939379453577753' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/1968717630596611.jpg', alt: 'Cadeira Design 1968717630596611' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/2185766785223977.jpg', alt: 'Cadeira Design 2185766785223977' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/5069677853258105.jpg', alt: 'Cadeira Design 5069677853258105' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/780995248128518.jpg', alt: 'Cadeira Design 780995248128518' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/812944551404219.jpg', alt: 'Cadeira Design 812944551404219' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/823951383321728.jpg', alt: 'Cadeira Design 823951383321728' },
+      { src: '/lovable-uploads/novas fotos/cadeiras/824986389960107.jpg', alt: 'Cadeira Design 824986389960107' }
+    ],
+    armarios: [
+      { src: '/lovable-uploads/novas fotos/armarios/1133302382074585.jpg', alt: 'Armário Design 1133302382074585' },
+      { src: '/lovable-uploads/novas fotos/armarios/1138888950909564.jpg', alt: 'Armário Design 1138888950909564' },
+      { src: '/lovable-uploads/novas fotos/armarios/1242468251258130.jpg', alt: 'Armário Design 1242468251258130' },
+      { src: '/lovable-uploads/novas fotos/armarios/1282050783983868.jpg', alt: 'Armário Design 1282050783983868' },
+      { src: '/lovable-uploads/novas fotos/armarios/1300757828257669.jpg', alt: 'Armário Design 1300757828257669' },
+      { src: '/lovable-uploads/novas fotos/armarios/1333512115012574.jpg', alt: 'Armário Design 1333512115012574' },
+      { src: '/lovable-uploads/novas fotos/armarios/1341608403994507.jpg', alt: 'Armário Design 1341608403994507' },
+      { src: '/lovable-uploads/novas fotos/armarios/1452472835825285.jpg', alt: 'Armário Design 1452472835825285' },
+      { src: '/lovable-uploads/novas fotos/armarios/1521182385573786.jpg', alt: 'Armário Design 1521182385573786' },
+      { src: '/lovable-uploads/novas fotos/armarios/1557093422133886.jpg', alt: 'Armário Design 1557093422133886' },
+      { src: '/lovable-uploads/novas fotos/armarios/1568488440802025.jpg', alt: 'Armário Design 1568488440802025' },
+      { src: '/lovable-uploads/novas fotos/armarios/1638668777092452.jpg', alt: 'Armário Design 1638668777092452' },
+      { src: '/lovable-uploads/novas fotos/armarios/1747818539194714.jpg', alt: 'Armário Design 1747818539194714' },
+      { src: '/lovable-uploads/novas fotos/armarios/1814351509163672.jpg', alt: 'Armário Design 1814351509163672' },
+      { src: '/lovable-uploads/novas fotos/armarios/24486334811036375.jpg', alt: 'Armário Design 24486334811036375' },
+      { src: '/lovable-uploads/novas fotos/armarios/24615217418128893.jpg', alt: 'Armário Design 24615217418128893' },
+      { src: '/lovable-uploads/novas fotos/armarios/788148923920831.jpg', alt: 'Armário Design 788148923920831' },
+      { src: '/lovable-uploads/novas fotos/armarios/810711554699496.jpg', alt: 'Armário Design 810711554699496' },
+      { src: '/lovable-uploads/novas fotos/armarios/814830867702998.jpg', alt: 'Armário Design 814830867702998' }
+    ],
+    poltronas: [
+      { src: '/lovable-uploads/novas fotos/poltronas/1096223605832728.jpg', alt: 'Poltrona Design 1096223605832728' },
+      { src: '/lovable-uploads/novas fotos/poltronas/1149445193821002.jpg', alt: 'Poltrona Design 1149445193821002' },
+      { src: '/lovable-uploads/novas fotos/poltronas/1456923468865968.jpg', alt: 'Poltrona Design 1456923468865968' },
+      { src: '/lovable-uploads/novas fotos/poltronas/24866300812965416.jpg', alt: 'Poltrona Design 24866300812965416' },
+      { src: '/lovable-uploads/novas fotos/poltronas/3254574814717303.jpg', alt: 'Poltrona Design 3254574814717303' },
+      { src: '/lovable-uploads/novas fotos/poltronas/828361749530713.jpg', alt: 'Poltrona Design 828361749530713' }
+    ]
   };
 
   const [imageLoaded, setImageLoaded] = React.useState<{ [key: string]: boolean }>({});
