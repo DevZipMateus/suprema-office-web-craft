@@ -75,7 +75,7 @@ const Hero = () => {
 
           {/* Video/Visual */}
           <div className="relative animate-fade-in order-1 lg:order-2">
-            <div className="relative max-w-md mx-auto lg:max-w-none">
+            <div className="relative max-w-lg mx-auto lg:max-w-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-2 lg:rotate-3"></div>
               <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
                 <div className="aspect-video bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
