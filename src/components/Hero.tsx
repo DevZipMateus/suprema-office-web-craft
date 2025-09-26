@@ -78,17 +78,17 @@ const Hero = () => {
             <div className="relative max-w-md mx-auto lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-2 lg:rotate-3"></div>
               <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
-                <div className="aspect-square bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
-                  <video 
-                    src="/lovable-uploads/galeria/suprema..mp4" 
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover rounded-xl"
-                  >
-                    Seu navegador não suporta vídeos.
-                  </video>
+                <div className="aspect-square bg-gradient-to-br from-primary/20 via-secondary/30 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent animate-pulse"></div>
+                  <div className="relative z-10 text-center p-6">
+                    <Award className="w-16 h-16 text-primary mx-auto mb-4 animate-bounce" />
+                    <h3 className="text-lg font-bold text-primary mb-2">Suprema Office</h3>
+                    <p className="text-sm text-muted-foreground">Mobiliário Corporativo Premium</p>
+                  </div>
+                  {/* Animated background elements */}
+                  <div className="absolute top-4 right-4 w-3 h-3 bg-primary/30 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute bottom-6 left-6 w-2 h-2 bg-accent rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute top-1/3 left-4 w-1 h-1 bg-secondary rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
                 </div>
                 
                 {/* Feature Cards */}
