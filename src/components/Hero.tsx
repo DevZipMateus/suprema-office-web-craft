@@ -85,7 +85,7 @@ const Hero = () => {
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-full object-cover rounded-xl transform -translate-y-4"
                   >
                     Seu navegador não suporta vídeos.
                   </video>
