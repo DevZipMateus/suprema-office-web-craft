@@ -11,46 +11,11 @@ import Header from '@/components/Header';
 const Catalogo = () => {
   // Organizando as imagens por categoria
   const imagesByCategory = {
-    mesas: [
-      { src: "/lovable-uploads/galeria/Cliente_1_1_IMG_20250817_114008.jpg", alt: "Mesa Cliente 1" },
-      { src: "/lovable-uploads/galeria/Cliente_1_10_Screenshot_2025-07-08-14-55-58.jpg", alt: "Mesa Cliente 10" },
-      { src: "/lovable-uploads/galeria/Cliente_1_20_IMG_20250626_190247_073.jpg", alt: "Mesa Cliente 20" },
-      { src: "/lovable-uploads/galeria/Cliente_1_30_IMG-20250626-WA0009.jpg", alt: "Mesa Cliente 30" },
-      { src: "/lovable-uploads/galeria/Cliente_1_40_IMG-20250623-WA0107.jpg", alt: "Mesa Cliente 40" },
-      { src: "/lovable-uploads/galeria/Cliente_1_50_Screenshot_2024-07-24-08-58-20.jpg", alt: "Mesa Cliente 50" },
-    ],
-    cadeiras: [
-      { src: "/lovable-uploads/galeria/Cliente_1_2_IMG-20250816-WA0000.jpg", alt: "Cadeira Cliente 2" },
-      { src: "/lovable-uploads/galeria/Cliente_1_11_IMG-20250708-WA0001.jpg", alt: "Cadeira Cliente 11" },
-      { src: "/lovable-uploads/galeria/Cliente_1_21_IMG_20250626_190242_315.jpg", alt: "Cadeira Cliente 21" },
-      { src: "/lovable-uploads/galeria/Cliente_1_31_IMG-20250626-WA0003.jpg", alt: "Cadeira Cliente 31" },
-      { src: "/lovable-uploads/galeria/Cliente_1_41_IMG-20250623-WA0076.jpg", alt: "Cadeira Cliente 41" },
-      { src: "/lovable-uploads/galeria/Cliente_1_51_IMG_20240405_124418_194.jpg", alt: "Cadeira Cliente 51" },
-    ],
-    estantes: [
-      { src: "/lovable-uploads/galeria/Cliente_1_3_IMG-20250805-WA0004.jpg", alt: "Estante Cliente 3" },
-      { src: "/lovable-uploads/galeria/Cliente_1_12_IMG_20250708_133537_359.jpg", alt: "Estante Cliente 12" },
-      { src: "/lovable-uploads/galeria/Cliente_1_22_IMG_20250626_190241_152.jpg", alt: "Estante Cliente 22" },
-      { src: "/lovable-uploads/galeria/Cliente_1_32_IMG-20250626-WA0006.jpg", alt: "Estante Cliente 32" },
-      { src: "/lovable-uploads/galeria/Cliente_1_42_IMG-20250623-WA0024.jpg", alt: "Estante Cliente 42" },
-      { src: "/lovable-uploads/galeria/Cliente_1_52_IMG_20231128_144139.jpg", alt: "Estante Cliente 52" },
-    ],
-    armarios: [
-      { src: "/lovable-uploads/galeria/Cliente_1_4_IMG_20250723_180817_151.jpg", alt: "Armário Cliente 4" },
-      { src: "/lovable-uploads/galeria/Cliente_1_13_Screenshot_2025-07-04-21-32-59.jpg", alt: "Armário Cliente 13" },
-      { src: "/lovable-uploads/galeria/Cliente_1_23_IMG_20250626_190239_613.jpg", alt: "Armário Cliente 23" },
-      { src: "/lovable-uploads/galeria/Cliente_1_33_IMG-20250625-WA0006.jpg", alt: "Armário Cliente 33" },
-      { src: "/lovable-uploads/galeria/Cliente_1_43_IMG-20250623-WA0090.jpg", alt: "Armário Cliente 43" },
-      { src: "/lovable-uploads/galeria/Cliente_1_53_IMG-20220329-WA0030_16287b.jpg", alt: "Armário Cliente 53" },
-    ],
-    poltronas: [
-      { src: "/lovable-uploads/galeria/Cliente_1_5_IMG_20250723_180814_758.jpg", alt: "Poltrona Cliente 5" },
-      { src: "/lovable-uploads/galeria/Cliente_1_14_1751473216458.jpg", alt: "Poltrona Cliente 14" },
-      { src: "/lovable-uploads/galeria/Cliente_1_24_IMG-20250626-WA0049.jpg", alt: "Poltrona Cliente 24" },
-      { src: "/lovable-uploads/galeria/Cliente_1_34_IMG_20250625_082132.jpg", alt: "Poltrona Cliente 34" },
-      { src: "/lovable-uploads/galeria/Cliente_1_44_IMG-20250623-WA0091.jpg", alt: "Poltrona Cliente 44" },
-      { src: "/lovable-uploads/galeria/Cliente_1_35_IMG_20250624_102215_739.webp", alt: "Poltrona Cliente 35" },
-    ]
+    mesas: [],
+    cadeiras: [],
+    estantes: [],
+    armarios: [],
+    poltronas: []
   };
 
   const [imageLoaded, setImageLoaded] = React.useState<{ [key: string]: boolean }>({});
