@@ -30,9 +30,31 @@ const About = () => {
   return (
     <section id="about" className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-secondary/30">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center">
+        {/* Video and Text Section */}
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center mb-12 sm:mb-16 lg:mb-20">
+          {/* Video */}
+          <div className="relative animate-fade-in">
+            <div className="relative max-w-lg mx-auto lg:max-w-2xl">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-2 lg:rotate-3"></div>
+              <div className="relative bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-2xl border border-border/50">
+                <div className="w-full h-[20rem] sm:h-[24rem] lg:h-[28rem] bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center overflow-hidden">
+                  <video 
+                    src="/lovable-uploads/galeria/suprema.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl"
+                  >
+                    Seu navegador não suporta vídeos.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Content */}
-          <div className="animate-fade-up order-2 lg:order-1">
+          <div className="animate-fade-up">
             <div className="mb-6 sm:mb-8">
               <span className="inline-block px-3 py-2 sm:px-4 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                 Sobre a Suprema Office
@@ -71,25 +93,25 @@ const About = () => {
               </Button>
             </div>
           </div>
+        </div>
 
-          {/* Features Grid */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 animate-fade-in order-1 lg:order-2">
-            {features.map((feature, index) => (
-              <div 
-                key={feature.title} 
-                className="bg-card p-4 sm:p-6 rounded-xl border border-border/50 hover:shadow-lg transition-all duration-300 group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="mb-3 sm:mb-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-primary-foreground" />
-                  </div>
+        {/* Features Grid Below */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 animate-fade-in">
+          {features.map((feature, index) => (
+            <div 
+              key={feature.title} 
+              className="bg-card p-4 sm:p-6 rounded-xl border border-border/50 hover:shadow-lg transition-all duration-300 group"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-primary-foreground" />
                 </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
-            ))}
-          </div>
+              <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3">{feature.title}</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
+            </div>
+          ))}
         </div>
 
         {/* Values Section */}
